@@ -1,0 +1,1157 @@
+[afaaq_academy_platform.html](https://github.com/user-attachments/files/21825407/afaaq_academy_platform.html)
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أفق المعرفة | Afaaq Academy | Académie Afaaq</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header with Logo and Language Selector */
+        .header {
+            background: linear-gradient(45deg, #228B22, #FFFFFF, #DC143C);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #228B22, #DC143C);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text h1 {
+            color: #228B22;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .logo-subtitle {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            background: #228B22;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: #DC143C;
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        .nav {
+            background: #fff;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+        }
+
+        .nav-item {
+            background: linear-gradient(45deg, #228B22, #32CD32);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.3s;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .nav-item:hover {
+            background: linear-gradient(45deg, #DC143C, #FF6347);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(220,20,60,0.3);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Dashboard Cards */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #228B22;
+            box-shadow: 0 10px 30px rgba(34,139,34,0.2);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #228B22, #DC143C);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: #228B22;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #228B22, #32CD32);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #DC143C, #FF6347);
+            transform: translateY(-2px);
+        }
+
+        /* Service Sections */
+        .service-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .service-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #228B22;
+        }
+
+        /* AI Text Editor */
+        .ai-editor {
+            background: white;
+            border: 2px solid #228B22;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .text-input {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: #f0f0f0;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            background: linear-gradient(45deg, #228B22, #32CD32);
+            height: 20px;
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Language Content */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(45deg, #228B22, #DC143C);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* RTL Support */
+        body[dir="rtl"] .nav-content {
+            direction: rtl;
+        }
+
+        body[dir="ltr"] {
+            direction: ltr;
+        }
+
+        body[dir="ltr"] .nav-content {
+            direction: ltr;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">أ</div>
+                <div class="logo-text">
+                    <h1 class="logo-title">أفق المعرفة</h1>
+                    <div class="logo-subtitle">منصة البحث الأكاديمي الذكي</div>
+                </div>
+            </div>
+            <div class="language-selector">
+                <button class="lang-btn active" onclick="switchLanguage('ar')">العربية</button>
+                <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+                <button class="lang-btn" onclick="switchLanguage('fr')">Français</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <div class="nav-content" id="nav-content">
+            <a href="#dashboard" class="nav-item" onclick="showSection('dashboard')">
+                <span class="nav-text">لوحة التحكم</span>
+            </a>
+            <a href="#ai" class="nav-item" onclick="showSection('ai')">
+                <span class="nav-text">الذكاء الاصطناعي</span>
+            </a>
+            <a href="#plagiarism" class="nav-item" onclick="showSection('plagiarism')">
+                <span class="nav-text">كشف الاستلال</span>
+            </a>
+            <a href="#training" class="nav-item" onclick="showSection('training')">
+                <span class="nav-text">التدريب</span>
+            </a>
+            <a href="#publishing" class="nav-item" onclick="showSection('publishing')">
+                <span class="nav-text">النشر</span>
+            </a>
+            <a href="#consulting" class="nav-item" onclick="showSection('consulting')">
+                <span class="nav-text">الاستشارات</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="service-section active">
+            <div class="lang-content active" id="dashboard-ar">
+                <h2>مرحباً بك في أفق المعرفة</h2>
+                <p>منصتك الشاملة للبحث الأكاديمي والنشر العلمي بدعم الذكاء الاصطناعي</p>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <div class="card-icon">🤖</div>
+                        <h3>الذكاء الاصطناعي</h3>
+                        <p>استخدم أدوات GPT وClaude لتحسين بحثك الأكاديمي</p>
+                        <button class="btn" onclick="showSection('ai')">ابدأ الآن</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🔍</div>
+                        <h3>كشف الاستلال</h3>
+                        <p>فحص شامل لأصالة النص مع نصائح للتحسين</p>
+                        <button class="btn" onclick="showSection('plagiarism')">فحص النص</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📚</div>
+                        <h3>أكاديمية التدريب</h3>
+                        <p>دورات متخصصة في البحث والنشر الأكاديمي</p>
+                        <button class="btn" onclick="showSection('training')">التحق بالدورات</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📝</div>
+                        <h3>النشر والتسويق</h3>
+                        <p>اقتراح المجلات المناسبة وتسويق بحثك</p>
+                        <button class="btn" onclick="showSection('publishing')">ابحث عن مجلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content" id="dashboard-en">
+                <h2>Welcome to Afaaq Academy</h2>
+                <p>Your comprehensive platform for academic research and scientific publishing with AI support</p>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <div class="card-icon">🤖</div>
+                        <h3>Artificial Intelligence</h3>
+                        <p>Use GPT and Claude tools to enhance your academic research</p>
+                        <button class="btn" onclick="showSection('ai')">Start Now</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🔍</div>
+                        <h3>Plagiarism Detection</h3>
+                        <p>Comprehensive text originality check with improvement tips</p>
+                        <button class="btn" onclick="showSection('plagiarism')">Check Text</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📚</div>
+                        <h3>Training Academy</h3>
+                        <p>Specialized courses in academic research and publishing</p>
+                        <button class="btn" onclick="showSection('training')">Join Courses</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📝</div>
+                        <h3>Publishing & Marketing</h3>
+                        <p>Journal recommendations and research marketing</p>
+                        <button class="btn" onclick="showSection('publishing')">Find Journal</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- French Content -->
+            <div class="lang-content" id="dashboard-fr">
+                <h2>Bienvenue à l'Académie Afaaq</h2>
+                <p>Votre plateforme complète pour la recherche académique et la publication scientifique avec le support IA</p>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <div class="card-icon">🤖</div>
+                        <h3>Intelligence Artificielle</h3>
+                        <p>Utilisez les outils GPT et Claude pour améliorer votre recherche académique</p>
+                        <button class="btn" onclick="showSection('ai')">Commencer</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🔍</div>
+                        <h3>Détection de Plagiat</h3>
+                        <p>Vérification complète de l'originalité du texte avec conseils d'amélioration</p>
+                        <button class="btn" onclick="showSection('plagiarism')">Vérifier le Texte</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📚</div>
+                        <h3>Académie de Formation</h3>
+                        <p>Cours spécialisés en recherche académique et publication</p>
+                        <button class="btn" onclick="showSection('training')">Rejoindre les Cours</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📝</div>
+                        <h3>Publication et Marketing</h3>
+                        <p>Recommandations de revues et marketing de recherche</p>
+                        <button class="btn" onclick="showSection('publishing')">Trouver une Revue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Section -->
+        <div id="ai" class="service-section">
+            <div class="lang-content active" id="ai-ar">
+                <h2>🤖 محرر الذكاء الاصطناعي</h2>
+                <p>استخدم أحدث تقنيات الذكاء الاصطناعي لتحسين كتابتك الأكاديمية</p>
+
+                <div class="ai-editor">
+                    <h4>أدخل النص أو الأمر المطلوب:</h4>
+                    <textarea class="text-input" id="ai-input" placeholder="أدخل النص الذي تريد تحسينه أو اكتب أمراً للذكاء الاصطناعي..."></textarea>
+                    <div style="margin: 1rem 0;">
+                        <button class="btn" onclick="processAI()">معالجة بالذكاء الاصطناعي</button>
+                        <button class="btn" onclick="generatePrompts()">اقتراح أوامر</button>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>📝 إعادة الصياغة</h4>
+                        <p>تحسين وإعادة صياغة النصوص الأكاديمية</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📊 تلخيص البحوث</h4>
+                        <p>إنشاء ملخصات دقيقة للأوراق البحثية</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🎯 هندسة الأوامر</h4>
+                        <p>تعلم كيفية كتابة أوامر فعالة للذكاء الاصطناعي</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content" id="ai-en">
+                <h2>🤖 AI Text Editor</h2>
+                <p>Use cutting-edge AI technology to enhance your academic writing</p>
+
+                <div class="ai-editor">
+                    <h4>Enter your text or prompt:</h4>
+                    <textarea class="text-input" placeholder="Enter the text you want to improve or write a prompt for AI..."></textarea>
+                    <div style="margin: 1rem 0;">
+                        <button class="btn" onclick="processAI()">Process with AI</button>
+                        <button class="btn" onclick="generatePrompts()">Suggest Prompts</button>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>📝 Paraphrasing</h4>
+                        <p>Improve and rephrase academic texts</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📊 Research Summarization</h4>
+                        <p>Create accurate summaries of research papers</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🎯 Prompt Engineering</h4>
+                        <p>Learn how to write effective AI prompts</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content" id="ai-fr">
+                <h2>🤖 Éditeur IA</h2>
+                <p>Utilisez la technologie IA de pointe pour améliorer votre écriture académique</p>
+
+                <div class="ai-editor">
+                    <h4>Entrez votre texte ou commande:</h4>
+                    <textarea class="text-input" placeholder="Entrez le texte que vous voulez améliorer ou écrivez une commande pour l'IA..."></textarea>
+                    <div style="margin: 1rem 0;">
+                        <button class="btn" onclick="processAI()">Traiter avec IA</button>
+                        <button class="btn" onclick="generatePrompts()">Suggérer des Commandes</button>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>📝 Paraphrase</h4>
+                        <p>Améliorer et reformuler les textes académiques</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📊 Résumé de Recherche</h4>
+                        <p>Créer des résumés précis d'articles de recherche</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🎯 Ingénierie des Commandes</h4>
+                        <p>Apprendre à écrire des commandes IA efficaces</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plagiarism Section -->
+        <div id="plagiarism" class="service-section">
+            <div class="lang-content active" id="plagiarism-ar">
+                <h2>🔍 فحص الاستلال الأكاديمي</h2>
+                <p>تحقق من أصالة النص واحصل على نصائح للتحسين</p>
+
+                <div class="ai-editor">
+                    <h4>أدخل النص للفحص:</h4>
+                    <textarea class="text-input" id="plagiarism-input" placeholder="الصق النص الذي تريد فحصه هنا..."></textarea>
+                    <button class="btn" onclick="checkPlagiarism()">فحص الاستلال</button>
+                </div>
+
+                <div id="plagiarism-results" style="display:none; margin-top: 2rem;">
+                    <h4>نتائج الفحص:</h4>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="similarity-bar" style="width: 15%;"></div>
+                    </div>
+                    <p>نسبة التشابه: <span id="similarity-percentage">15%</span></p>
+                    <div class="feature-grid">
+                        <div class="feature">
+                            <h4>✅ النص أصيل إلى حد كبير</h4>
+                            <p>نسبة التشابه منخفضة ومقبولة أكاديمياً</p>
+                        </div>
+                        <div class="feature">
+                            <h4>📚 مصادر مطلوبة</h4>
+                            <p>تأكد من توثيق جميع المراجع بشكل صحيح</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content" id="plagiarism-en">
+                <h2>🔍 Academic Plagiarism Check</h2>
+                <p>Verify text originality and get improvement recommendations</p>
+
+                <div class="ai-editor">
+                    <h4>Enter text to check:</h4>
+                    <textarea class="text-input" placeholder="Paste the text you want to check here..."></textarea>
+                    <button class="btn" onclick="checkPlagiarism()">Check Plagiarism</button>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>🎯 Advanced Detection</h4>
+                        <p>Multi-language plagiarism detection</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📊 Detailed Reports</h4>
+                        <p>Comprehensive similarity analysis</p>
+                    </div>
+                    <div class="feature">
+                        <h4>💡 Improvement Tips</h4>
+                        <p>Suggestions to enhance originality</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content" id="plagiarism-fr">
+                <h2>🔍 Vérification de Plagiat Académique</h2>
+                <p>Vérifiez l'originalité du texte et obtenez des recommandations d'amélioration</p>
+
+                <div class="ai-editor">
+                    <h4>Entrez le texte à vérifier:</h4>
+                    <textarea class="text-input" placeholder="Collez le texte que vous voulez vérifier ici..."></textarea>
+                    <button class="btn" onclick="checkPlagiarism()">Vérifier le Plagiat</button>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>🎯 Détection Avancée</h4>
+                        <p>Détection de plagiat multilingue</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📊 Rapports Détaillés</h4>
+                        <p>Analyse complète de similarité</p>
+                    </div>
+                    <div class="feature">
+                        <h4>💡 Conseils d'Amélioration</h4>
+                        <p>Suggestions pour améliorer l'originalité</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Training Section -->
+        <div id="training" class="service-section">
+            <div class="lang-content active" id="training-ar">
+                <h2>📚 أكاديمية التدريب</h2>
+                <p>دورات تدريبية شاملة في البحث الأكاديمي والنشر العلمي</p>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <div class="card-icon">🎯</div>
+                        <h3>هندسة الأوامر</h3>
+                        <p>تعلم كيفية التعامل مع الذكاء الاصطناعي بكفاءة</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 60%;"></div>
+                        </div>
+                        <p>التقدم: 60%</p>
+                        <button class="btn">متابعة الدورة</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📝</div>
+                        <h3>كتابة البحوث</h3>
+                        <p>أسس الكتابة الأكاديمية والبحثية</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 30%;"></div>
+                        </div>
+                        <p>التقدم: 30%</p>
+                        <button class="btn">بدء الدورة</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h3>التوثيق والمراجع</h3>
+                        <p>أساليب التوثيق APA، MLA، Chicago</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 90%;"></div>
+                        </div>
+                        <p>التقدم: 90% - مكتمل تقريباً</p>
+                        <button class="btn">إنهاء الدورة</button>
+                    </div>
+                </div>
+
+                <h3>الشهادات المحققة:</h3>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>🏆 شهادة هندسة الأوامر</h4>
+                        <p>مُنحت في يناير 2025</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📜 شهادة البحث الأكاديمي</h4>
+                        <p>مُنحت في ديسمبر 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content" id="training-en">
+                <h2>📚 Training Academy</h2>
+                <p>Comprehensive training courses in academic research and scientific publishing</p>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <div class="card-icon">🎯</div>
+                        <h3>Prompt Engineering</h3>
+                        <p>Learn to work efficiently with AI</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 60%;"></div>
+                        </div>
+                        <p>Progress: 60%</p>
+                        <button class="btn">Continue Course</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📝</div>
+                        <h3>Research Writing</h3>
+                        <p>Fundamentals of academic and research writing</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 30%;"></div>
+                        </div>
+                        <p>Progress: 30%</p>
+                        <button class="btn">Start Course</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h3>Citations & References</h3>
+                        <p>APA, MLA, Chicago citation styles</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 90%;"></div>
+                        </div>
+                        <p>Progress: 90% - Nearly Complete</p>
+                        <button class="btn">Finish Course</button>
+                    </div>
+                </div>
+
+                <h3>Certificates Earned:</h3>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>🏆 Prompt Engineering Certificate</h4>
+                        <p>Awarded January 2025</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📜 Academic Research Certificate</h4>
+                        <p>Awarded December 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content" id="training-fr">
+                <h2>📚 Académie de Formation</h2>
+                <p>Cours de formation complets en recherche académique et publication scientifique</p>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <div class="card-icon">🎯</div>
+                        <h3>Ingénierie des Commandes</h3>
+                        <p>Apprendre à travailler efficacement avec l'IA</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 60%;"></div>
+                        </div>
+                        <p>Progrès: 60%</p>
+                        <button class="btn">Continuer le Cours</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📝</div>
+                        <h3>Rédaction de Recherche</h3>
+                        <p>Fondamentaux de la rédaction académique</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 30%;"></div>
+                        </div>
+                        <p>Progrès: 30%</p>
+                        <button class="btn">Commencer le Cours</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h3>Citations et Références</h3>
+                        <p>Styles de citation APA, MLA, Chicago</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 90%;"></div>
+                        </div>
+                        <p>Progrès: 90% - Presque Terminé</p>
+                        <button class="btn">Terminer le Cours</button>
+                    </div>
+                </div>
+
+                <h3>Certificats Obtenus:</h3>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>🏆 Certificat d'Ingénierie des Commandes</h4>
+                        <p>Décerné en janvier 2025</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📜 Certificat de Recherche Académique</h4>
+                        <p>Décerné en décembre 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Publishing Section -->
+        <div id="publishing" class="service-section">
+            <div class="lang-content active" id="publishing-ar">
+                <h2>📝 النشر والتسويق</h2>
+                <p>اعثر على المجلة المناسبة وسوّق بحثك بفعالية</p>
+
+                <div class="ai-editor">
+                    <h4>تفاصيل بحثك:</h4>
+                    <input type="text" class="text-input" style="height: 50px;" placeholder="عنوان البحث" />
+                    <textarea class="text-input" placeholder="ملخص البحث والكلمات المفتاحية..."></textarea>
+                    <button class="btn" onclick="findJournals()">ابحث عن مجلات مناسبة</button>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>🎯 اقتراح المجلات</h4>
+                        <p>عثور على أنسب المجلات لتخصصك</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📊 تحليل المجلات</h4>
+                        <p>معلومات التأثير وسرعة النشر</p>
+                    </div>
+                    <div class="feature">
+                        <h4>✍️ قوالب التقديم</h4>
+                        <p>قوالب جاهزة لتقديم البحوث</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content" id="publishing-en">
+                <h2>📝 Publishing & Marketing</h2>
+                <p>Find suitable journals and market your research effectively</p>
+
+                <div class="ai-editor">
+                    <h4>Your Research Details:</h4>
+                    <input type="text" class="text-input" style="height: 50px;" placeholder="Research Title" />
+                    <textarea class="text-input" placeholder="Research abstract and keywords..."></textarea>
+                    <button class="btn" onclick="findJournals()">Find Suitable Journals</button>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>🎯 Journal Recommendations</h4>
+                        <p>Find the most suitable journals for your field</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📊 Journal Analysis</h4>
+                        <p>Impact information and publication speed</p>
+                    </div>
+                    <div class="feature">
+                        <h4>✍️ Submission Templates</h4>
+                        <p>Ready templates for research submission</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content" id="publishing-fr">
+                <h2>📝 Publication et Marketing</h2>
+                <p>Trouvez des revues appropriées et commercialisez votre recherche efficacement</p>
+
+                <div class="ai-editor">
+                    <h4>Détails de Votre Recherche:</h4>
+                    <input type="text" class="text-input" style="height: 50px;" placeholder="Titre de la Recherche" />
+                    <textarea class="text-input" placeholder="Résumé de recherche et mots-clés..."></textarea>
+                    <button class="btn" onclick="findJournals()">Trouver des Revues Appropriées</button>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h4>🎯 Recommandations de Revues</h4>
+                        <p>Trouver les revues les plus appropriées pour votre domaine</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📊 Analyse des Revues</h4>
+                        <p>Informations d'impact et vitesse de publication</p>
+                    </div>
+                    <div class="feature">
+                        <h4>✍️ Modèles de Soumission</h4>
+                        <p>Modèles prêts pour la soumission de recherche</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consulting Section -->
+        <div id="consulting" class="service-section">
+            <div class="lang-content active" id="consulting-ar">
+                <h2>💬 الاستشارات الأكاديمية</h2>
+                <p>احصل على استشارات مخصصة من خبراء البحث الأكاديمي</p>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <div class="card-icon">👨‍🏫</div>
+                        <h3>استشارة فورية</h3>
+                        <p>تواصل مباشر مع خبراء أكاديميين</p>
+                        <button class="btn">بدء محادثة</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📋</div>
+                        <h3>مراجعة البحث</h3>
+                        <p>مراجعة شاملة لبحثك قبل النشر</p>
+                        <button class="btn">طلب مراجعة</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🎯</div>
+                        <h3>خطة النشر</h3>
+                        <p>وضع استراتيجية شاملة للنشر الأكاديمي</p>
+                        <button class="btn">إعداد خطة</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content" id="consulting-en">
+                <h2>💬 Academic Consulting</h2>
+                <p>Get personalized consultations from academic research experts</p>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <div class="card-icon">👨‍🏫</div>
+                        <h3>Instant Consultation</h3>
+                        <p>Direct communication with academic experts</p>
+                        <button class="btn">Start Conversation</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📋</div>
+                        <h3>Research Review</h3>
+                        <p>Comprehensive review of your research before publication</p>
+                        <button class="btn">Request Review</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🎯</div>
+                        <h3>Publication Plan</h3>
+                        <p>Develop a comprehensive academic publication strategy</p>
+                        <button class="btn">Create Plan</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content" id="consulting-fr">
+                <h2>💬 Consultation Académique</h2>
+                <p>Obtenez des consultations personnalisées d'experts en recherche académique</p>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <div class="card-icon">👨‍🏫</div>
+                        <h3>Consultation Instantanée</h3>
+                        <p>Communication directe avec des experts académiques</p>
+                        <button class="btn">Commencer la Conversation</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📋</div>
+                        <h3>Révision de Recherche</h3>
+                        <p>Révision complète de votre recherche avant publication</p>
+                        <button class="btn">Demander une Révision</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🎯</div>
+                        <h3>Plan de Publication</h3>
+                        <p>Développer une stratégie complète de publication académique</p>
+                        <button class="btn">Créer un Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="lang-content active" id="footer-ar">
+            <h3>أفق المعرفة - منصة البحث الأكاديمي الذكي</h3>
+            <p>نحو مستقبل أفضل للبحث العلمي والنشر الأكاديمي بدعم الذكاء الاصطناعي</p>
+            <p>© 2025 جميع الحقوق محفوظة</p>
+        </div>
+
+        <div class="lang-content" id="footer-en">
+            <h3>Afaaq Academy - Smart Academic Research Platform</h3>
+            <p>Towards a better future for scientific research and academic publishing with AI support</p>
+            <p>© 2025 All rights reserved</p>
+        </div>
+
+        <div class="lang-content" id="footer-fr">
+            <h3>Académie Afaaq - Plateforme de Recherche Académique Intelligente</h3>
+            <p>Vers un avenir meilleur pour la recherche scientifique et la publication académique avec le support IA</p>
+            <p>© 2025 Tous droits réservés</p>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'ar';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+
+            // Update direction
+            if (lang === 'ar') {
+                document.body.setAttribute('dir', 'rtl');
+                document.body.setAttribute('lang', 'ar');
+            } else {
+                document.body.setAttribute('dir', 'ltr');
+                document.body.setAttribute('lang', lang);
+            }
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update logo
+            const logoTitle = document.querySelector('.logo-title');
+            const logoSubtitle = document.querySelector('.logo-subtitle');
+
+            if (lang === 'ar') {
+                logoTitle.textContent = 'أفق المعرفة';
+                logoSubtitle.textContent = 'منصة البحث الأكاديمي الذكي';
+            } else if (lang === 'en') {
+                logoTitle.textContent = 'Afaaq Academy';
+                logoSubtitle.textContent = 'Smart Academic Research Platform';
+            } else if (lang === 'fr') {
+                logoTitle.textContent = 'Académie Afaaq';
+                logoSubtitle.textContent = 'Plateforme de Recherche Intelligente';
+            }
+
+            // Update navigation
+            const navTexts = document.querySelectorAll('.nav-text');
+            const navItems = {
+                ar: ['لوحة التحكم', 'الذكاء الاصطناعي', 'كشف الاستلال', 'التدريب', 'النشر', 'الاستشارات'],
+                en: ['Dashboard', 'AI Tools', 'Plagiarism Check', 'Training', 'Publishing', 'Consulting'],
+                fr: ['Tableau de Bord', 'Outils IA', 'Vérification Plagiat', 'Formation', 'Publication', 'Consultation']
+            };
+
+            navTexts.forEach((text, index) => {
+                if (navItems[lang] && navItems[lang][index]) {
+                    text.textContent = navItems[lang][index];
+                }
+            });
+
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Show current language content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                if (content.id.endsWith('-' + lang)) {
+                    content.classList.add('active');
+                }
+            });
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.service-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update URL
+            window.location.hash = sectionId;
+        }
+
+        function processAI() {
+            const input = document.getElementById('ai-input');
+            if (input && input.value.trim()) {
+                alert(currentLang === 'ar' ? 
+                    'تم إرسال النص للمعالجة بالذكاء الاصطناعي!' : 
+                    currentLang === 'en' ? 
+                    'Text sent for AI processing!' :
+                    'Texte envoyé pour traitement IA!');
+                // Here you would typically send to AI service
+            } else {
+                alert(currentLang === 'ar' ? 
+                    'يرجى إدخال نص للمعالجة' : 
+                    currentLang === 'en' ? 
+                    'Please enter text to process' :
+                    'Veuillez entrer le texte à traiter');
+            }
+        }
+
+        function generatePrompts() {
+            const prompts = {
+                ar: [
+                    'أعد صياغة هذا النص الأكاديمي بأسلوب علمي متقدم',
+                    'لخص هذا البحث في 200 كلمة',
+                    'اقترح عنواناً مناسباً لهذا البحث',
+                    'حسن من جودة هذا الملخص الأكاديمي'
+                ],
+                en: [
+                    'Rephrase this academic text in an advanced scientific style',
+                    'Summarize this research in 200 words',
+                    'Suggest an appropriate title for this research',
+                    'Improve the quality of this academic abstract'
+                ],
+                fr: [
+                    'Reformulez ce texte académique dans un style scientifique avancé',
+                    'Résumez cette recherche en 200 mots',
+                    'Suggérez un titre approprié pour cette recherche',
+                    'Améliorez la qualité de ce résumé académique'
+                ]
+            };
+
+            const randomPrompt = prompts[currentLang][Math.floor(Math.random() * prompts[currentLang].length)];
+            const input = document.getElementById('ai-input');
+            if (input) {
+                input.value = randomPrompt;
+            }
+        }
+
+        function checkPlagiarism() {
+            const results = document.getElementById('plagiarism-results');
+            if (results) {
+                results.style.display = 'block';
+                // Simulate API call
+                setTimeout(() => {
+                    alert(currentLang === 'ar' ? 
+                        'تم فحص النص بنجاح! النص أصيل إلى حد كبير.' : 
+                        currentLang === 'en' ? 
+                        'Text checked successfully! The text is largely original.' :
+                        'Texte vérifié avec succès! Le texte est en grande partie original.');
+                }, 1000);
+            }
+        }
+
+        function findJournals() {
+            alert(currentLang === 'ar' ? 
+                'جاري البحث عن المجلات المناسبة لبحثك...' : 
+                currentLang === 'en' ? 
+                'Searching for journals suitable for your research...' :
+                'Recherche de revues appropriées pour votre recherche...');
+        }
+
+        // Initialize page
+        window.addEventListener('load', function() {
+            // Check URL hash
+            const hash = window.location.hash.substr(1);
+            if (hash && document.getElementById(hash)) {
+                showSection(hash);
+            }
+        });
+
+        // Handle navigation clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('nav-item')) {
+                e.preventDefault();
+                const sectionId = e.target.getAttribute('href').substr(1);
+                showSection(sectionId);
+            }
+        });
+    </script>
+</body>
+</html>
